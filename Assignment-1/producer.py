@@ -16,22 +16,20 @@
 # limitations under the License.
 
 
-import argparse
+
 # A simple example demonstrating use of JSONSerializer.
 import os
-from typing import List
 from uuid import uuid4
 import csv
 
-#from confluent_kafka.schema_registry import *
-import pandas as pd
+
 from confluent_kafka import Producer
 from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.json_schema import JSONSerializer
 from confluent_kafka.serialization import (MessageField, SerializationContext,
                                            StringSerializer)
 from dotenv import load_dotenv
-from six.moves import input
+
 
 load_dotenv()
 
@@ -96,7 +94,6 @@ def get_restaurant_instance(filepath):
         for i in f:
             i = cast_str_int(i)
             yield (Restaurant(i))
-
 
 
 
