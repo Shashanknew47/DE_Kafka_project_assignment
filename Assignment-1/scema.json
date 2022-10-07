@@ -8,7 +8,7 @@
 
 "Order Number": {
   "description": "The type(v) type is used.",
-  "type": "integer"
+  "type": "string"
 },
 "Order Date": {
   "description": "The type(v) type is used.",
