@@ -1,6 +1,7 @@
 import client
 import file_object
 import schema
+import csv
 
 
 from confluent_kafka.schema_registry import SchemaRegistryClient
@@ -37,10 +38,15 @@ def main(topic):
 
             restaurant_record = json_deserializer(msg.value(), SerializationContext(msg.topic(), MessageField.VALUE))
 
+
             if restaurant_record is not None:
                 print("User record {}: restaurant_record: {}\n"
                       .format(msg.key(), restaurant_record))
-                      
+
+                file_object.append_output(restaurant_record.record)
+
+
+
         except KeyboardInterrupt:
             break
 
