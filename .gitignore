@@ -2,6 +2,7 @@
 
 bin/
 
+prac.py
 
 # Environments
 .env

@@ -40,6 +40,7 @@ def main(topic):
             if restaurant_record is not None:
                 print("User record {}: restaurant_record: {}\n"
                       .format(msg.key(), restaurant_record))
+                      
         except KeyboardInterrupt:
             break
 

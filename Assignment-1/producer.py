@@ -65,6 +65,7 @@ def main(topic):
 
     try:
         FILE_PATH = "/Users/shashankjain/Desktop/Practice/Ineuron/Kafka/DE_Kafka_project_assignment/Assignment-1/restaurant_orders.csv"
+        i = 0
         for restaurant in file_object.get_restaurant_instance(filepath=FILE_PATH):
 
             print(restaurant)
@@ -72,7 +73,9 @@ def main(topic):
                             key=string_serializer(str(uuid4()), restaurant_to_dict),
                             value=json_serializer(restaurant, SerializationContext(topic, MessageField.VALUE)),
                             on_delivery=delivery_report)
-            break
+            i += 1
+            if i > 10:
+                break
     except KeyboardInterrupt:
         pass
     except ValueError:
