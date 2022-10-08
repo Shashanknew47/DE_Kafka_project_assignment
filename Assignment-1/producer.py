@@ -36,7 +36,6 @@ load_dotenv()
 FILE_PATH = "/Users/shashankjain/Desktop/Practice/Ineuron/Kafka/DE_Kafka_project_assignment/Assignment-1/restaurant_orders.csv"
 
 
-
 def sasl_conf():
 
     sasl_conf = {'sasl.mechanism': os.environ["SSL_MACHENISM"],
@@ -58,7 +57,6 @@ def schema_config():
     }
 
 
-
 class Restaurant:
     def __init__(self,record) -> None:
         for k,v in record.items():
@@ -71,7 +69,6 @@ class Restaurant:
 
     def __str__(self) -> str:
         return f'Restaurant({self.record})'
-
 
 
 
@@ -139,6 +136,7 @@ def delivery_report(err, msg):
 
 
 
+
 def main(topic):
 
     schema_registry_conf = schema_config()
@@ -173,7 +171,6 @@ def main(topic):
 
     print("\nFlushing records...")
     producer.flush()
-
 
 
 main("restaurent-take-away-data")
