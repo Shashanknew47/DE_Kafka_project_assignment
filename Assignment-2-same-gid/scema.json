@@ -1,0 +1,38 @@
+
+{
+"$id": "http://example.com/myURI.schema.json",
+"$schema": "http://json-schema.org/draft-07/schema#",
+"additionalProperties": false,
+"description": "To validate restaurent orders data ",
+"properties": {
+
+"Order Number": {
+  "description": "The type(v) type is used.",
+  "type": "string"
+},
+"Order Date": {
+  "description": "The type(v) type is used.",
+  "type": "string"
+},
+"Item Name": {
+  "description": "The type(v) type is used.",
+  "type": "string"
+},
+"Quantity": {
+  "description": "The type(v) type is used.",
+  "type": "integer"
+},
+"Product Price": {
+  "description": "The type(v) type is used.",
+  "type": "number"
+},
+"Total Products": {
+  "description": "The type(v) type is used.",
+  "type": "number"
+}
+
+},
+
+"title": "SampleRecord",
+"type": "object"
+}
