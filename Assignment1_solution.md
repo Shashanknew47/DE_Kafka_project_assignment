@@ -67,9 +67,7 @@ try:
   Records printed by each each consumer :74,818
 ```
 
-![solution linke](Assignment-1-diff-gid)
-
-
+![solution link](Assignment-1-diff-gid)
 
 
 
@@ -83,10 +81,10 @@ Records printed by  consumer_2 : 24,661
 
 ```
 
-![solution linke](Assignment-2-same-gid)
+![solution link](Assignment-2-same-gid)
 
 
 ## 7. Once above questions are done, write another kafka consumer to read data from kafka topic and from the consumer code create one csv file "output.csv" and append consumed records output.csv file.
 
 
-![solution linke](Assignment-1)
+![solution link](Assignment-1)
