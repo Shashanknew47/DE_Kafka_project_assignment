@@ -2,12 +2,33 @@ import client
 import file_object
 import schema
 import csv
+import os
 
 
 from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka import Consumer
 from confluent_kafka.serialization import SerializationContext, MessageField
 from confluent_kafka.schema_registry.json_schema import JSONDeserializer
+
+
+
+def append_output(record):
+    cpath = os.getcwd()
+    exten = 'Assignment-1'
+    path = os.path.join(cpath,exten)
+
+    val = os.path.isfile(os.path.join(path,'output-2.csv'))
+
+    with open('Assignment-1/output-2.csv','a') as file:
+        headers = ['Order Number','Order Date','Item Name','Quantity','Product Price','Total Products']
+
+        csv_writer = csv.DictWriter(file, fieldnames=headers)
+
+        if not val:
+            csv_writer.writeheader()
+
+        csv_writer.writerow(record)
+
 
 
 def main(topic):
@@ -20,14 +41,12 @@ def main(topic):
 
     consumer_conf = client.sasl_conf()
     consumer_conf.update({
-                     'group.id': 'group1',
+                     'group.id': 'group2',
                      'auto.offset.reset': "earliest"})
 
     consumer = Consumer(consumer_conf)
     consumer.subscribe([topic])
 
-
-    i = 0
     while True:
         try:
             # SIGINT can't be handled when polling, limit timeout to 1 second.
@@ -39,12 +58,10 @@ def main(topic):
 
 
             if restaurant_record is not None:
-                i += 1
                 print("User record {}: restaurant_record: {}\n"
                       .format(msg.key(), restaurant_record))
-                print(i)
 
-                file_object.append_output(restaurant_record.record)
+                append_output(restaurant_record.record)
 
 
 

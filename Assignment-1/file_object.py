@@ -1,5 +1,5 @@
 import csv
-
+import os
 
 class Restaurant:
     def __init__(self,record) -> None:
@@ -41,24 +41,32 @@ def get_restaurant_instance(filepath):
             yield (Restaurant(i))
 
 
+def create_csv(name):
+    import os
+
 def append_output(record):
+    cpath = os.getcwd()
+    exten = 'Assignment-1'
+    path = os.path.join(cpath,exten)
+
+    val = os.path.isfile(os.path.join(path,'output.csv'))
+
     with open('Assignment-1/output.csv','a') as file:
         headers = ['Order Number','Order Date','Item Name','Quantity','Product Price','Total Products']
 
         csv_writer = csv.DictWriter(file, fieldnames=headers)
-        csv_writer.writeheader()
+
+        if not val:
+            csv_writer.writeheader()
 
         csv_writer.writerow(record)
 
 
-
 if __name__ == '__main__':
     FILE_PATH = "/Users/shashankjain/Desktop/Practice/Ineuron/Kafka/DE_Kafka_project_assignment/Assignment-1/restaurant_orders.csv"
-    r = get_restaurant_instance(FILE_PATH)
-    print(next(r))
-    print(next(r))
+    # r = get_restaurant_instance(FILE_PATH)
+    # print(next(r))
+    # print(next(r))
     record  = {'Order Number': '16118', 'Order Date': '03/08/2019 20:25', 'Item Name': 'Plain Papadum', 'Quantity': '2', 'Product Price': '0.8', 'Total Products': '6'}
 
     append_output(record)
-
-    

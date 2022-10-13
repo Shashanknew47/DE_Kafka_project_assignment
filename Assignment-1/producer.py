@@ -10,6 +10,9 @@ from confluent_kafka.schema_registry.json_schema import JSONSerializer
 from confluent_kafka.serialization import (MessageField, SerializationContext,
                                            StringSerializer)
 
+
+                                           
+
 def restaurant_to_dict(restaurant, ctx):
     """
     Returns a dict representation of a User instance for serialization.
@@ -67,15 +70,14 @@ def main(topic):
         FILE_PATH = "/Users/shashankjain/Desktop/Practice/Ineuron/Kafka/DE_Kafka_project_assignment/Assignment-1/restaurant_orders.csv"
         i = 0
         for restaurant in file_object.get_restaurant_instance(filepath=FILE_PATH):
-
+            i += 1
+            print(i)
             print(restaurant)
             producer.produce(topic=topic,
                             key=string_serializer(str(uuid4()), restaurant_to_dict),
                             value=json_serializer(restaurant, SerializationContext(topic, MessageField.VALUE)),
                             on_delivery=delivery_report)
-            i += 1
-            if i > 10:
-                break
+
     except KeyboardInterrupt:
         pass
     except ValueError:
