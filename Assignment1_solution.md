@@ -1,12 +1,66 @@
-1. Setup Confluent Kafka Account
+## 1. Setup Confluent Kafka Account
+
+
 
 ## 2. Create one kafka topic named as "restaurent-take-away-data" with 3 partitions
 
 
+
 ## 3. Setup key (string) & value (json) schema in the confluent schema registry
+
+### key
+
+``` json
+
+"string"
+
+```
+
+
+### value
+
+``` json
+{
+  "$id": "http://example.com/myURI.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "To validate restaurent orders data ",
+  "properties": {
+    "Item Name": {
+      "description": "The type(v) type is used.",
+      "type": "string"
+    },
+    "Order Date": {
+      "description": "The type(v) type is used.",
+      "type": "string"
+    },
+    "Order Number": {
+      "description": "The type(v) type is used.",
+      "type": "string"
+    },
+    "Product Price": {
+      "description": "The type(v) type is used.",
+      "type": "number"
+    },
+    "Quantity": {
+      "description": "The type(v) type is used.",
+      "type": "integer"
+    },
+    "Total Products": {
+      "description": "The type(v) type is used.",
+      "type": "number"
+    }
+  },
+  "title": "SampleRecord",
+  "type": "object"
+}
+
+```
 
 
 ## 4. Write a kafka producer program (python or any other language) to read data records from restaurent data csv file,make sure schema is not hardcoded in the producer code, read the latest version of schema and schema_str from schema registry and use it for data serialization.
+
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-1/producer.py
 
 client.py
 ``` python
@@ -41,6 +95,7 @@ def create_schema_str_latest(subject):
 
 ## 5. From producer code, publish data in Kafka Topic one by one and use dynamic key while publishing the records into the Kafka Topic
 
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-1/producer.py
 
 ``` python
 
@@ -61,13 +116,22 @@ try:
 
 ## 6. Write kafka consumer code and create two copies of same consumer code and save it with different names (kafka_consumer_1.py & kafka_consumer_2.py), again make sure lates schema version and schema_str is not hardcoded in the consumer code, read it automatically from the schema registry to desrialize the data.Now test two scenarios with your consumer code:
 
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-2-same-gid
+
+#### kafka_consumer_1.py
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-2-same-gid/kafka_consumer_1.py
+
+
+#### kafka_consumer_2.py
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-2-same-gid/kafka_consumer_2.py
+
 ###    a.) Use "group.id" property in consumer config for both consumers and mention different group_ids in kafka_consumer_1.py & kafka_consumer_2.py,apply "earliest" offset property in both consumers and run these two consumers from two different terminals. Calculate how many records each consumer consumed and printed on the terminal
 
 ```
   Records printed by each each consumer :74,818
 ```
 
-![solution link](Assignment-1-diff-gid)
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-1-diff-gid
 
 
 
@@ -81,10 +145,11 @@ Records printed by  consumer_2 : 24,661
 
 ```
 
-![solution link](Assignment-2-same-gid)
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-2-same-gid
+
 
 
 ## 7. Once above questions are done, write another kafka consumer to read data from kafka topic and from the consumer code create one csv file "output.csv" and append consumed records output.csv file.
 
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-1/consumer.py
 
-![solution link](Assignment-1)
