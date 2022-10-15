@@ -110,7 +110,7 @@ try:
 
 ## 6. Write kafka consumer code and create two copies of same consumer code and save it with different names (kafka_consumer_1.py & kafka_consumer_2.py), again make sure lates schema version and schema_str is not hardcoded in the consumer code, read it automatically from the schema registry to desrialize the data.Now test two scenarios with your consumer code:
 
-https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-2-same-gid
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-1-same-gid
 
 #### kafka_consumer_1.py
 
@@ -118,7 +118,7 @@ https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignmen
 
 #### kafka_consumer_2.py
 
-https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-2-same-gid/kafka_consumer_2.py
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/blob/main/Assignment-1-same-gid/kafka_consumer_2.py
 
 ### a.) Use "group.id" property in consumer config for both consumers and mention different group_ids in kafka_consumer_1.py & kafka_consumer_2.py,apply "earliest" offset property in both consumers and run these two consumers from two different terminals. Calculate how many records each consumer consumed and printed on the terminal
 
@@ -136,7 +136,7 @@ Records printed by  consumer_2 : 24,661
 
 ```
 
-https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-2-same-gid
+https://github.com/Shashanknew47/DE_Kafka_project_assignment/tree/main/Assignment-1-same-gid
 
 ## 7. Once above questions are done, write another kafka consumer to read data from kafka topic and from the consumer code create one csv file "output.csv" and append consumed records output.csv file.
 
